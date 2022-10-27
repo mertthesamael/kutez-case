@@ -1,0 +1,71 @@
+@import "../../pages/Home/home.scss";
+
+.input{
+    width: 100%;
+    border-radius: 50px;
+    height: 100%;
+    outline: none;
+    border: none;
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+   
+   
+}
+
+.inputwrapper{
+    width: 15rem;
+    height: 3rem;
+    position: relative;
+    z-index: 1;
+    & label{
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        pointer-events: none;
+        width: 100%;
+        height: max-content;
+        transform: translate(0, 10%);
+        display: flex;
+        align-items: center;
+        transition: 300ms all;
+        width: max-content;
+        font-family: "Poppins";
+        font-size: 27px;
+        font-weight: 500;
+        color: #8D9092;
+        z-index: 12;
+    }
+    & input:focus + label{
+        height: 50%;
+        background: white;
+        padding-left: 0;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #777;
+    }
+    & input[type=submit]{
+        width: 100%;
+        border-radius: 50px;
+        height: 100%;
+        outline: none;
+        border: none;
+        background: transparent;
+        font-family: "Poppins";
+        font-size: 27px;
+        font-weight: 500;
+        color: white;
+        position: relative;
+        z-index: 278;
+        padding: 0 1rem;
+    
+    }
+    &::after{
+        content: "";
+        background:linear-gradient(60deg, $blue 0%, $purple 100%);
+        position: absolute;
+        inset: -1px;
+        border-radius: 50px;
+       
+    }
+}

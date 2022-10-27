@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/", (req,res) => {
     res.json({
-        'product_types':[{'key':1, 'value':'Cotton'},{'key':2, 'value':'Linen'}]
+        'product_types':[{'key':1, 'value':'Cotton','quantity':100},{'key':2, 'value':'Linen','quantity':100}]
     })
 })
 
