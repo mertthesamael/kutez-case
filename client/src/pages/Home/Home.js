@@ -24,8 +24,8 @@ const Home = (props) => {
 
                         <form>
                             <Input placeholder='Order Date'/>
-                            <Input placeholder='Fabric Type' data={data?.product_types}/>
-                            <Input placeholder='Quantity' data={data?.product_types}/>
+                            <Input placeholder='Fabric Type' type='select' data={data?.product_types}/>
+                            <Input placeholder='Quantity' type='number' data={data?.product_types}/>
                             <Input placeholder='Quantity' type="submit"/>
                         </form>
 
