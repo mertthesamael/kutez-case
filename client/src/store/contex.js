@@ -10,13 +10,19 @@ export const ProductContextWrapper = (props) => {
     const [selectedProduct, setSelectedProduct] = useState({})
     const [selectedDate, setSelectedDate] = useState("")
     const [errors, setErrors] = useState({})
-    const [result, setResult] = useState("Please enter your order information to estimate shipping date...")
+    const [result, setResult] = useState()
     const [calcDay, setCalcDay] = useState()
+    const [selectedQuantity, setSelectedQuantity] = useState()
+
+    const selectedQuantityHandler = (val) => {
+        return setSelectedQuantity(val)
+    }
 
     const errorsHandler = (err,type) => {
         return setErrors(prevState => ({
             ...prevState,
-            [type]:err
+            [type]:err,
+            
         }))
     }
 
@@ -46,7 +52,9 @@ export const ProductContextWrapper = (props) => {
             result:result,
             onResult:resultHandler,
             calcDay:calcDay,
-            onCalcDay:calcDayHandler
+            onCalcDay:calcDayHandler,
+            selectedQuantity:selectedQuantity,
+            onSelectedQuantity:selectedQuantityHandler,
         }}>
             {props.children}
         </ProductContext.Provider>

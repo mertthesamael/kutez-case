@@ -1,13 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { ProductContext } from "../../store/contex"
 import Input from "../Input/Input"
-
-
-
-
+import dayjs from "dayjs";
+import dayjsBusinessDays from "dayjs-business-days";
+dayjs.extend(dayjsBusinessDays);
 const Form = ({data}) => {
-    const { selectedProduct, selectedDate,calcDay, onCalcDay, onSelectedDate, errors, onError, onResult } =
+    const { selectedProduct, selectedDate,calcDay, onCalcDay, onSelectedDate, errors, onError, onResult, selectedQuantity } =
       useContext(ProductContext);
+
     // Function for pop-up sequence
     const popup = () => {
         document.querySelector(".errPopup").style.opacity = 1;
@@ -21,12 +21,12 @@ const Form = ({data}) => {
       if (selectedDatee < now) {
         onError("Planned order date, cannot be in the past", "date");
         e.target.date.style.boxShadow = '0 0 0 2px #F94C66'
-
         popup()
-      } else {
+       
+      } else if(selectedDatee > now) {
         onError(null, "date");
         e.target.date.style.boxShadow = ''
-
+    
       }
     };
     //Type error
@@ -34,19 +34,16 @@ const Form = ({data}) => {
         if (type === 'Fabric Type') {
           onError("Please select a product type", "type");
           e.style.boxShadow = '0 0 0 2px #F94C66'
-  
           popup()
         } else{
         onError(null, "type");
         e.style.boxShadow = ''
-
         }
       };
 
     //Quantity error
     const checkQuantity = (e) => {
       if (e.target.quantity.value < 0 || e.target.quantity.value > 100) {
-        
         onError(`Quantity must be between 0-${selectedProduct[0]?.quantity}`, "quantity");
         e.target.quantity.style.boxShadow = '0 0 0 2px #F94C66'
         popup()
@@ -54,41 +51,49 @@ const Form = ({data}) => {
         onError(`Please enter a valid quantity`, "quantity");
         e.target.quantity.style.boxShadow = '0 0 0 2px #F94C66'
         popup()
-
       }
       
-      else if (
-        e.target.quantity.value > 0 ||
-        e.target.quantity.value < 0
-      ) {
+      else if (e.target.quantity.value > 0 || e.target.quantity.value < 0) {
         onError(null, "quantity");
         e.target.quantity.style.boxShadow = ''
-
       }
     };
 
     //Form handler
     const getFormData = (e) => {
-      const productType = document.getElementById("selected").textContent;
-      const typeInputField = document.querySelector('.customselect')
-      e.preventDefault();
-      const now = new Date();
-      const selected = new Date(selectedDate);
-      let day = 2;
-      selected.setDate(selected.getDate() + day)
+        const productType = document.getElementById("selected").textContent;
+        const typeInputField = document.querySelector('.customselect')
+        e.preventDefault();
+        const now = new Date();
+        const selected = new Date(selectedDate);
+        checkDate(e,selectedDate, now);
+        checkType(typeInputField,productType);
+        checkQuantity(e);
+      
+        let result;
+        
+        if(selectedProduct[0].value==='Cotton'){
+            if(selectedQuantity <= 50){
+                result = dayjs(selected).businessDaysAdd(3)
+            }
+            if(selectedQuantity > 50){
+                result = dayjs(selected).businessDaysAdd(4)
+                    
+            }
+      }
+        if(selectedProduct[0].value==='Linen'){
+            
+            if(selectedQuantity <= 50){
+                result = dayjs(selected).businessDaysAdd(5)
+                
+                }
+            if(selectedQuantity > 50){
+                result = dayjs(selected).businessDaysAdd(6)
 
-      if(selected.getDay() ===0){
-            selected.setDate(selected.getDate() + 1)
-        }
-        if(selected.getDay() ===6){
-
-            selected.setDate(selected.getDate() + 2)
-        }
-      checkDate(e,selectedDate, now);
-      checkType(typeInputField,productType);
-      onCalcDay(2)
-      checkQuantity(e);
-        onResult(selected.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) )
+            }
+    }
+    onResult(result.$d.toLocaleDateString('en-us', { year:"numeric", month:"long", day:"numeric"}) )
+    
     }
 
     return(

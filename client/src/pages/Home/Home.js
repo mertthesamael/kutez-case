@@ -25,9 +25,15 @@ const Home = (props) => {
                 <Form data={data} />
               </div>
               <div className="home__main__inner__result">
+                {result ?
+            <h1 id="result">
+                Your Estimated Shipping Time Is <b>{result}</b>
+                </h1>:
                 <h1 id="result">
-                  {result}
+                Please enter your order information to estimate shipping date...
                 </h1>
+            }
+
               </div>
             </div>
           </div>

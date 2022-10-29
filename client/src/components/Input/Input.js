@@ -1,32 +1,40 @@
 import { useContext, useEffect, useState } from "react"
 import { ProductContext } from "../../store/contex"
+import Info from "../../assets/info-svgrepo-com.svg"
 import "./input.scss"
-import "react-datepicker/dist/react-datepicker.css"
-
 const Input = ({type, placeholder, data}) => {
 
         
-    const {selectedProduct, onSelectedProduct,selectedDate,onSelectedDate, errors} = useContext(ProductContext)
+    const {selectedProduct, onSelectedProduct,selectedDate,onSelectedDate, errors, onSelectedQuantity} = useContext(ProductContext)
        
-        const valueState = (e) => {
+    const [ddState, setDdState] = useState(false)
+    
+        //Selected quantity from user
+        const quantityState = (e) => {
             if(e.target.value !==""){
                 document.getElementById('placeholder').style.opacity = 0
+                onSelectedQuantity(e.target.value)
             }
             else if(e.target.value ==""){
                 document.getElementById('placeholder').style.opacity = 1
             }
         }
+
+        //Selected date from user
         const dateHandler = (e) => {
             const date = new Date(e.target.value)
             return onSelectedDate(date)
         }
-        const [ddState, setDdState] = useState(false)
-          const toggleDd = () => {
-            return setDdState(!ddState)
-          }
-          const getOption = (e) => {
-            onSelectedProduct(data?.filter(name => name.value === e.target.textContent))
-          }
+
+        //Selected product type from user
+        const getType = (e) => {
+          onSelectedProduct(data?.filter(name => name.value === e.target.textContent))
+        }
+
+        //Dropdown function
+        const toggleDd = () => {
+           return setDdState(!ddState)
+        }
 
 //useEffect function for closing dropdown by clicking anywhere on the screen          
 useEffect(() => {
@@ -46,33 +54,39 @@ return () => {
             {type!== "submit"?
         type =='number'?
         <>
-         <input onChange={valueState} className='input' id='test2' name='quantity' type='number'/>
+         <img src={Info}/>
+        <div className="tooltip">Shipping Dates May Vary Based on Quantity</div>
+         <input onChange={quantityState} className='input' id='productnumber' name='quantity' type='number'/>
          <label id='placeholder' htmlFor='test'>{placeholder}</label>
         {errors&&<div className="errormessage">{errors.quantity}</div>}
         </>:
         type =='select'?
         <>
-        <div className="customselect" onClick={toggleDd}>
+        
+        <div style={{}} className="customselect" id='productstyle' onClick={toggleDd}>
         
         <div className="options" id='opts' >
-            {ddState&& data?.map(x=><div onClick={getOption} className='option'>{x.value}</div>)}
+            {ddState&& data?.map(x=><div onClick={getType} className='option'>{x.value}</div>)}
         </div>
         
         </div>
-        <label id='selected' style={selectedProduct[0]?.value?{color:'black'}:{}} htmlFor='test'>{selectedProduct[0]?.value?selectedProduct[0]?.value:placeholder}</label>
+        <label id='selected' style={selectedProduct[0]?.value?{color:'black',zIndex:'22'}:{zIndex:'22'}} htmlFor='test'>{selectedProduct[0]?.value?selectedProduct[0]?.value:placeholder}</label>
         {errors&&<div className="errormessage">{errors.type}</div>}
 
         </>
         :
         <>
-        <input name='date' onChange={dateHandler} required className='input' id='test' type={'date'}/>
+        <input name='date' onChange={dateHandler} required className='input' id='datepicker' type={'date'}/>
         
         <label htmlFor='test'>{selectedDate?"":placeholder}</label>
         {errors&&<div className="errormessage">{errors.date}</div>}
 
         </>
     
-        :<input type='submit' value='Calculate'/>
+        :
+        <>
+        <input type='submit' value='Calculate'/>
+        </>
     }
     </div>
 

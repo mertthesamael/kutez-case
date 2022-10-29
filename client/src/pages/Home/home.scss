@@ -27,7 +27,7 @@ $error: #F94C66;
             position: absolute;
             height: 60%;
             width: 90%;
-            padding: 2rem 8rem;
+            padding: 2rem 10%;
             display: flex;
             align-items: center;
             &__result{
@@ -68,7 +68,7 @@ $error: #F94C66;
             }
 
             &__title{
-                width: 70%;
+                width: 100%;
                 & #title{
                     font-size: 85px;
                     color: $text-color;
@@ -95,14 +95,14 @@ $error: #F94C66;
 .errPopup{
     position: absolute;
     top: 5%;
-    width: 30%;
+    width: max-content;
     left: 0;
     right: 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 7vh;
+    padding: 1rem;
     opacity: 0;
     transition: all 1s ease-in-out;
     background-color: #F94C66;
@@ -112,5 +112,38 @@ $error: #F94C66;
     z-index: 1231;
     border-radius: 50px;
 
+}
+
+@media screen and (max-width: 1130px){
+    #title{
+        font-size: 50px!important;
+    }
+    #brandname{
+        font-size: 30px!important;
+    }
+   form{
+    transform-origin: top;
+   }
+}
+@media screen and (max-width: 600px){
+    .home__main{
+        width: 95%;
+    }
+    #title{
+        font-size: 30px!important;
+    }
+    #brandname{
+        font-size: 25px!important;
+    }
+   
+   form{
+    transform-origin: top;
+    
+    row-gap: 2rem!important;
+    margin: 2rem 0;
+   }
+   #result{
+    font-size: 20px!important;
+   }
 }
 // #2414DB and #AC6EFF with a 60-degree angle
