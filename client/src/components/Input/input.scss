@@ -12,12 +12,34 @@
    
    
 }
+.datepicker{
+    position: relative;
+    z-index: 1231;
+    height: 100%;
+    width: 100%;
+    z-index: 2112;
+   
+}
 
+.react-datepicker{
+    
+    z-index: 1231;
+    height: 100%;
+    width: 100%;
+    z-index: 21;
+}
 .inputwrapper{
     width: 15rem;
     height: 3rem;
     position: relative;
     z-index: 1;
+    border-radius: 50px;
+    z-index: 1231;
+   & .errormessage{
+        opacity: 1;
+        color:$error;
+        font-family: 'Poppins';
+    }
    
       .customselect{
         position: relative;
@@ -72,7 +94,7 @@
                 font-size: 14px;
 
                 &:hover{
-                    background-color: rgba(128, 128, 128, 0.253);
+                    background-color: #8d909257;
                 }
             }
          
@@ -117,9 +139,13 @@
         font-weight: 500;
         color: white;
         position: relative;
-        z-index: 278;
+        z-index: 2;
         padding: 0 1rem;
     
+    }
+    & input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     }
     &::after{
         content: "";
@@ -127,6 +153,17 @@
         position: absolute;
         inset: -1px;
         border-radius: 50px;
+    }
+    input{
+        font-size: 22px;
+        
+       
+    }
+    input[type=date]:required:invalid::-webkit-datetime-edit {
+        color: transparent;
+    }
+    input[type=date]:focus::-webkit-datetime-edit {
+        color: black !important;
     }
 }
 
@@ -139,6 +176,5 @@
     padding-left: 2rem;
     visibility: visible!important;
     z-index: 123;
-  
 
 }

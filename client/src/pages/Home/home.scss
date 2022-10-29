@@ -1,6 +1,7 @@
 $purple: #AC6EFF;
 $blue: #2414DB;
 $text-color: #2B2E39;
+$error: #F94C66;
 
 .home{
     width: 100vw;
@@ -8,6 +9,8 @@ $text-color: #2B2E39;
     display: flex;
     background-color: black;
     overflow: hidden;
+    transition: all 0.5 ease-in-out;
+
     &__main{
         min-width: 80%;
         height: 150%;
@@ -47,8 +50,6 @@ $text-color: #2B2E39;
                 width: 70%;
                 position: relative;
                 & form{
-
-                    
                     display: flex;
                     justify-content: space-between;
                     flex-wrap: wrap;
@@ -90,5 +91,26 @@ $text-color: #2B2E39;
         background-color: black;
         background: linear-gradient(60deg, $purple 0%, $blue 100%);
     }
+}
+.errPopup{
+    position: absolute;
+    top: 5%;
+    width: 30%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    background-color: #F94C66;
+    color: white;
+    font-weight: bolder;
+    font-family: 'Poppins';
+    z-index: 1231;
+    border-radius: 50px;
+
 }
 // #2414DB and #AC6EFF with a 60-degree angle
