@@ -9,7 +9,7 @@ export const ProductContextWrapper = (props) => {
 
     const [selectedProduct, setSelectedProduct] = useState({})
     const [selectedDate, setSelectedDate] = useState("")
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState(true)
     const [result, setResult] = useState()
     const [calcDay, setCalcDay] = useState()
     const [selectedQuantity, setSelectedQuantity] = useState()

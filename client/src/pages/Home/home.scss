@@ -31,7 +31,7 @@ $error: #F94C66;
             display: flex;
             align-items: center;
             &__result{
-                
+                    
                 & #result{
                     color: $text-color;
                     font-family: "Poppins";
@@ -43,7 +43,7 @@ $error: #F94C66;
             &__content{
                 display: flex;
                 flex-direction: column;
-                height: 70%;
+                height: 80%;
                 justify-content: space-between;
             }
             &__form{
