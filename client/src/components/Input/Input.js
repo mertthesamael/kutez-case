@@ -63,7 +63,7 @@ return () => {
         type =='select'?
         <>
         
-        <div style={{}} className="customselect" id='productstyle' onClick={toggleDd}>
+        <div className="customselect" id='productstyle' onClick={toggleDd}>
         
         <div className="options" id='opts' >
             {ddState&& data?.map(x=><div onClick={getType} className='option'>{x.value}</div>)}
