@@ -4,6 +4,8 @@ This is the case-study that i've done for Kutez.
 
 This project, calculates estimated shipping time by given product type, quantity, and date.
 
+Live : https://kutez-case.vercel.app/
+
 ![image](https://user-images.githubusercontent.com/79616834/198855232-7d6070b1-04a4-41fd-9518-ae8aad466685.png)
 
 I've created API using **Node/Express** and for the front end, i used **ReactJS, SASS, React-Query, Axios and DayJS**
