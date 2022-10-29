@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../store/contex";
 import Input from "../Input/Input";
 import dayjs from "dayjs";
@@ -27,7 +27,7 @@ const Form = ({ data }) => {
       e.target.date.style.boxShadow = "0 0 0 2px #F94C66";
       popup();
       dateEr = true;
-    } else if (selectedDatee > now) {
+    } else if (selectedDatee >= now) {
       onError(null, "date");
       e.target.date.style.boxShadow = "";
       dateEr = false;
@@ -81,7 +81,7 @@ const Form = ({ data }) => {
     checkQuantity(e);
 
     let result;
-    if (typeEr == false && quanEr == false && dateEr == false) {
+    if (typeEr === false && quanEr === false && dateEr === false) {
       if (selectedProduct[0].value === "Cotton") {
         if (selectedQuantity <= 50) {
           result = dayjs(selected).businessDaysAdd(3);

@@ -19,7 +19,7 @@ const Input = ({ type, placeholder, data }) => {
     if (e.target.value !== "") {
       document.getElementById("placeholder").style.opacity = 0;
       onSelectedQuantity(e.target.value);
-    } else if (e.target.value == "") {
+    } else if (e.target.value === "") {
       document.getElementById("placeholder").style.opacity = 1;
     }
   };
@@ -58,9 +58,9 @@ const Input = ({ type, placeholder, data }) => {
   return (
     <div className="inputwrapper">
       {type !== "submit" ? (
-        type == "number" ? (
+        type === "number" ? (
           <>
-            <img src={Info} />
+            <img alt='info-button' src={Info} />
             <div className="tooltip">
               Shipping Dates May Vary Based on Quantity
             </div>
@@ -75,7 +75,7 @@ const Input = ({ type, placeholder, data }) => {
             <label id="placeholder">{placeholder}</label>
             {errors && <div className="errormessage">{errors.quantity}</div>}
           </>
-        ) : type == "select" ? (
+        ) : type === "select" ? (
           <>
             <div className="customselect" id="productstyle" onClick={toggleDd}>
               <div className="options" id="opts">
