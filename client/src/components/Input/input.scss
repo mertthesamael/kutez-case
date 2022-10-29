@@ -36,6 +36,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50px;
+   
     
     & .tooltip{
         width: max-content;
@@ -74,6 +75,12 @@
         opacity: 1;
         color:$error;
         font-family: 'Poppins';
+        position: absolute;
+        height: 2rem;
+        width: 100%;
+        z-index: 12;
+        bottom: -2rem;
+        
     }
    
       .customselect{
@@ -247,7 +254,6 @@
     }
     .errormessage{
         position: absolute;
-        right: -6rem!important;
         width: 5rem;
         display: flex;
         font-size: 10px!important;
