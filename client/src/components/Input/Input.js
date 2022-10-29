@@ -65,15 +65,14 @@ const Input = ({ type, placeholder, data }) => {
               Shipping Dates May Vary Based on Quantity
             </div>
             <input
+              data-testid="number-input"
               onChange={quantityState}
               className="input"
               id="productnumber"
               name="quantity"
               type="number"
             />
-            <label id="placeholder" htmlFor="test">
-              {placeholder}
-            </label>
+            <label id="placeholder">{placeholder}</label>
             {errors && <div className="errormessage">{errors.quantity}</div>}
           </>
         ) : type == "select" ? (
@@ -82,7 +81,7 @@ const Input = ({ type, placeholder, data }) => {
               <div className="options" id="opts">
                 {ddState &&
                   data?.map((x) => (
-                    <div onClick={getType} className="option">
+                    <div key={x.key} onClick={getType} className="option">
                       {x.value}
                     </div>
                   ))}
@@ -120,7 +119,7 @@ const Input = ({ type, placeholder, data }) => {
         )
       ) : (
         <>
-          <input type="submit" value="Calculate" />
+          <input data-testid="submit-input" type="submit" value={placeholder} />
         </>
       )}
     </div>

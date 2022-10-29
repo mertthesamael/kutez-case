@@ -3,7 +3,7 @@ $blue: #2414DB;
 $text-color: #2B2E39;
 $error: #F94C66;
 
-.home{
+.home {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -11,55 +11,61 @@ $error: #F94C66;
     overflow: hidden;
     transition: all 0.5 ease-in-out;
 
-    &__main{
+    &__main {
         min-width: 80%;
         height: 150%;
         background-color: white;
         position: relative;
         top: -25%;
-        border-start-end-radius:580px;
-        border-end-end-radius:580px;
+        border-start-end-radius: 580px;
+        border-end-end-radius: 580px;
         display: flex;
         align-items: center;
         z-index: 3;
-        
-        &__inner{
+
+        &__inner {
             position: absolute;
             height: 60%;
             width: 90%;
             padding: 2rem 10%;
             display: flex;
             align-items: center;
-            &__result{
-                    
-                & #result{
+
+            &__result {
+
+                & #result {
                     color: $text-color;
                     font-family: "Poppins";
                     font-size: 29px;
                     font-weight: 200;
                 }
-                
+
             }
-            &__content{
+
+            &__content {
                 display: flex;
                 flex-direction: column;
                 height: 80%;
                 justify-content: space-between;
             }
-            &__form{
+
+            &__form {
                 width: 70%;
                 position: relative;
-                & form{
+
+                & form {
                     display: flex;
                     justify-content: space-between;
                     flex-wrap: wrap;
                     row-gap: 4rem;
                 }
             }
-            &__brandname{
+
+            &__brandname {
                 position: absolute;
                 top: 1rem;
-                & #brandname{
+
+                & #brandname {
                     font-size: 43px;
                     color: $text-color;
                     font-family: 'Poppins';
@@ -67,21 +73,23 @@ $error: #F94C66;
                 }
             }
 
-            &__title{
+            &__title {
                 width: 100%;
-                & #title{
+
+                & #title {
                     font-size: 85px;
                     color: $text-color;
                     font-family: 'Poppins';
                     font-weight: 800;
                 }
             }
-           
+
         }
-        // Extra Bold, 85pt, 2B2E39, with h2 tag
+
 
     }
-    &__gradient{
+
+    &__gradient {
         width: 40%;
         position: absolute;
         right: 0;
@@ -92,7 +100,8 @@ $error: #F94C66;
         background: linear-gradient(60deg, $purple 0%, $blue 100%);
     }
 }
-.errPopup{
+
+.errPopup {
     position: absolute;
     top: 5%;
     width: max-content;
@@ -114,36 +123,42 @@ $error: #F94C66;
 
 }
 
-@media screen and (max-width: 1130px){
-    #title{
-        font-size: 50px!important;
+@media screen and (max-width: 1130px) {
+    #title {
+        font-size: 50px !important;
     }
-    #brandname{
-        font-size: 30px!important;
+
+    #brandname {
+        font-size: 30px !important;
     }
-   form{
-    transform-origin: top;
-   }
+
+    form {
+        transform-origin: top;
+    }
 }
-@media screen and (max-width: 600px){
-    .home__main{
+
+@media screen and (max-width: 600px) {
+    .home__main {
         width: 95%;
     }
-    #title{
-        font-size: 30px!important;
+
+    #title {
+        font-size: 30px !important;
     }
-    #brandname{
-        font-size: 25px!important;
+
+    #brandname {
+        font-size: 25px !important;
     }
-   
-   form{
-    transform-origin: top;
-    
-    row-gap: 2rem!important;
-    margin: 2rem 0;
-   }
-   #result{
-    font-size: 20px!important;
-   }
+
+    form {
+        transform-origin: top;
+
+        row-gap: 2rem !important;
+        margin: 2rem 0;
+    }
+
+    #result {
+        font-size: 20px !important;
+    }
 }
-// #2414DB and #AC6EFF with a 60-degree angle
+

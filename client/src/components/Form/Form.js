@@ -5,13 +5,8 @@ import dayjs from "dayjs";
 import dayjsBusinessDays from "dayjs-business-days";
 dayjs.extend(dayjsBusinessDays);
 const Form = ({ data }) => {
-  const {
-    selectedProduct,
-    selectedDate,
-    onError,
-    onResult,
-    selectedQuantity,
-  } = useContext(ProductContext);
+  const { selectedProduct, selectedDate, onError, onResult, selectedQuantity } =
+    useContext(ProductContext);
 
   // Function for pop-up sequence
   const popup = () => {
@@ -122,7 +117,7 @@ const Form = ({ data }) => {
         data={data?.product_types}
       />
       <Input placeholder="Quantity" type="number" data={data?.product_types} />
-      <Input placeholder="Quantity" type="submit" />
+      <Input placeholder="Calculate" type="submit" />
     </form>
   );
 };
